@@ -1,19 +1,11 @@
 package com.bolsadeideas.springboot.backend.apirest.models.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -54,8 +46,20 @@ public class Cliente implements Serializable {
 	@JoinColumn(name="region_id")
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Region region;
-	
-	
+
+
+	//Relacion vbidirecional con facturas
+	//? mappedBy → para que la relacion sea en ambos sentidos vbidirecional - > pon el atributo de la contra parte -> este se agregara como llave doranea
+	//?cascade → cuando se elimine el cliente → se eliminaran las facturas asociadas a  este (hijos basicamente ), tambien cuado se guarde un cliente luego se podra guardar sus facturas
+	@JsonIgnoreProperties({"cliente","hibernateLazyInitializer", "handler"}) //! para no tener problemas de relacion inversa, ahora vete ala factura que revvienta
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente", cascade = CascadeType.ALL) // un cliente puede tener muchas facturas
+	private List<Factura> facturas; //debemos inicializar su valor
+
+	public Cliente() {
+		this.facturas = new ArrayList<>();
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -110,6 +114,14 @@ public class Cliente implements Serializable {
 
 	public void setRegion(Region region) {
 		this.region = region;
+	}
+
+	public List<Factura> getFacturas() {
+		return facturas;
+	}
+
+	public void setFacturas(List<Factura> facturas) {
+		this.facturas = facturas;
 	}
 
 	private static final long serialVersionUID = 1L;

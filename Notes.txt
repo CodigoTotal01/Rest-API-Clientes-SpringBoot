@@ -1,0 +1,14 @@
+//cardinalidad
+Un cliente puede tener MUCHAS facturas
+Pero, una factura solo tiene un Cliente
+
+Cliente -> on etomany -> el no almacena nada
+Factura > manytoOne -> contiene la llave foranea del id cliente -> almacena las facturas de los clientes
+
+--------------------------------------------------------------------
+Factuara y Linea factura -> Relacion en un solo sentido -> unidireccional  -> factura tiene MUCHAS lineas -> pero las lineas no tiene ninguna relacio n con las Facturas
+En factura queremos ver los detalles
+--------------------------------------------------------------------
+
+Necesitamso el producto en la liena entonces linea guara la llavve foranea de producto
+y sera una oneToMany problbblkemente

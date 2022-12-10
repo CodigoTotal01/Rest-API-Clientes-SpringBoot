@@ -32,3 +32,32 @@ INSERT INTO `roles` (nombre) VALUES ('ROLE_ADMIN');
 INSERT INTO `usuarios_roles` (usuario_id, role_id) VALUES (1, 1);
 INSERT INTO `usuarios_roles` (usuario_id, role_id) VALUES (2, 2);
 INSERT INTO `usuarios_roles` (usuario_id, role_id) VALUES (2, 1);
+
+
+
+/*Populate tabla productos */
+INSERT INTO productos (nombre, precio, create_at) VALUES ('Play Station 5', 1234.50, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('Xbox Series X', 1500.50, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('Appple Mac Book', 50000.00, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('IPhone 15', 2500.50, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('Huawei P50 Pro Max', 1000.00, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('Laptop Asus Gamer I5', 1300.80, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('Nintendo Swith Pro ', 1500.90, NOW());
+
+
+/*Facturas  y sus items */
+INSERT INTO facturas (descripcion, observacion, cliente_id, create_at) VALUES ("Factura de Equipos de oficina", null, 1, NOW());
+    INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES (2,1,1);
+    INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES (2,1,2);
+    INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES (4,1,4);
+    INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES (3,1,6);
+
+INSERT INTO facturas (descripcion, observacion, cliente_id, create_at) VALUES ("Factura de Gamer de Casa", null, 2, NOW());
+    INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES (1,2,4);
+    INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES (3,2,3);
+    INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES (4,2,2);
+    INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES (2,2,1);
+
+/*as relaciones bidirecionales dan problemas muy serios en cuanto el json -> forma un lop infinito */
+
+
