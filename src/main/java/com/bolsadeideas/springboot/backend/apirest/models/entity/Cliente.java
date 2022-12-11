@@ -44,6 +44,7 @@ public class Cliente implements Serializable {
 	@NotNull(message="la región no puede ser vacia")
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="region_id")
+
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Region region;
 
@@ -51,8 +52,7 @@ public class Cliente implements Serializable {
 	//Relacion vbidirecional con facturas
 	//? mappedBy → para que la relacion sea en ambos sentidos vbidirecional - > pon el atributo de la contra parte -> este se agregara como llave doranea
 	//?cascade → cuando se elimine el cliente → se eliminaran las facturas asociadas a  este (hijos basicamente ), tambien cuado se guarde un cliente luego se podra guardar sus facturas
-	@JsonIgnoreProperties({"cliente","hibernateLazyInitializer", "handler"}) //! para no tener problemas de relacion inversa, ahora vete ala factura que revvienta
-
+	@JsonIgnoreProperties(value = {"cliente","hibernateLazyInitializer", "handler"} , allowSetters = true) //! para no tener problemas de relacion inversa, ahora vete ala factura que revvienta
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente", cascade = CascadeType.ALL) // un cliente puede tener muchas facturas
 	private List<Factura> facturas; //debemos inicializar su valor
 

@@ -27,7 +27,7 @@ public class Factura implements Serializable {
     private Date createAt;
 
     //Lazy > solo caundo se llma los metodos GET
-    @JsonIgnoreProperties({"facturas","hibernateLazyInitializer", "handler"}) //! para no tener problemas de relacion inversa, ahora vete ala factura que revvienta
+    @JsonIgnoreProperties(value = {"facturas","hibernateLazyInitializer", "handler"}, allowSetters = true) //! para no tener problemas de relacion inversa, ahora vete ala factura que revvienta
     @ManyToOne(fetch = FetchType.LAZY) //muchas facturas estan asociadas a un solo cliente
     @JoinColumn(name = "cliente_id") //llave foranea que se ubica en la factura -> Join Colum para indicar la llave foranea
     private Cliente cliente;

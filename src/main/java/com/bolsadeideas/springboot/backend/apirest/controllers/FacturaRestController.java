@@ -20,7 +20,7 @@ public class FacturaRestController {
     private IClienteService clienteService;
 
     //? ver el detalle
-    @Secured({"ROLE_ADMIN", "ROLE_USER"})
+    @Secured({"ROLE_ADMIN"})
     @RequestMapping("/facturas/{id}") //ruta segundo nivel
     @ResponseStatus(code = HttpStatus.OK) // se puede omitir
     public Factura show(@PathVariable Long id){
