@@ -20,7 +20,7 @@ public class ItemFactura implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY) // muchos items contienen un producto
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) //! quitar atributos basura . añadir en cada relacion
-    @JoinColumn(name = "producto_id") // el es el dueño de la relacion :0aqui se inserta solito cuando es el uqien tien una sola entidad
+    @JoinColumn(name = "producto_id") // el es el dueño de la relacion : aqui se inserta solito cuando es el quien tien una sola entidad
     private Producto producto;
 
     public Producto getProducto() {
@@ -43,7 +43,7 @@ public class ItemFactura implements Serializable {
         return cantidad;
     }
 
-    //tenda una llave foranea registrando la factura
+    //tendra una llave foranea registrando la factura
 
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
@@ -51,7 +51,7 @@ public class ItemFactura implements Serializable {
 
     //? Calcular el importe total  →
     public Double getImporte(){
-        return cantidad.doubleValue()*producto.getPrecio(); // ocnvertir la cantidad de un integer a un dopuble
+        return cantidad.doubleValue()*producto.getPrecio(); // convertir la cantidad de un integer a un dopuble
     }
 
 }

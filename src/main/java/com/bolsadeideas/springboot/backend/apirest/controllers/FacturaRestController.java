@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController // para indicar que es un controllador rest de la api
-@CrossOrigin(origins = { "http://localhost:4200" }) //inidcar la ruta del frond-end
-@RequestMapping("/api")//ruta principal para rllegar a las demas -> ruta de primer nivel
+@CrossOrigin(origins = { "http://localhost:4200" }) //indicar la ruta del frond-end
+@RequestMapping("/api")//ruta principal para llegar a las demas -> ruta de primer nivel
 public class FacturaRestController {
 
     @Autowired

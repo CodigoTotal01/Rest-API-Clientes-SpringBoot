@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface IProductoDao extends CrudRepository<Producto, Long> {
 
-    //Filtrar producto -> where like _> autompletado -> consulta jpa
-    @Query("select p from Producto p where p.nombre like %?1%")// cualquier similiturd
+    //Filtrar producto -> where like _> autccompletado -> consulta jpa
+    @Query("select p from Producto p where p.nombre like %?1%")// cualquier similitud
     public List<Producto> findByNombre(String term);
 
 

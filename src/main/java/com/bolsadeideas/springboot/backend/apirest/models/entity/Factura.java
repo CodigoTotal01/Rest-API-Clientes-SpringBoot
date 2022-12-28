@@ -41,7 +41,7 @@ public class Factura implements Serializable {
     private List<ItemFactura> items; //Muchos items en una factura
 
 
-//siempre inicializar nuestros array lsit
+//siempre inicializar nuestros array list
 
 
     public Factura() {
